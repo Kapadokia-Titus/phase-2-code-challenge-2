@@ -3,7 +3,7 @@ import BotCard from "./BotCard";
 
 function YourBotArmy({info}) {
  
-  console.log(info)
+
 
 
   return (
