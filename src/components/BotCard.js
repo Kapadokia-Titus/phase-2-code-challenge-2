@@ -11,6 +11,10 @@ const botTypeClasses = {
 
 function BotCard({ bot, onCardClick, onCardCancel }) {
 
+  const handleButtonClick= (id)=>{
+    onCardCancel(id)
+  }
+
   return (
     <div className="ui column">
       <div
@@ -48,7 +52,7 @@ function BotCard({ bot, onCardClick, onCardCancel }) {
             <div className="ui center aligned segment basic">
               <button
                 className="ui mini red button"
-                onClick={onCardCancel}
+                onClick={()=>handleButtonClick(bot.id)}
               >
                 x
               </button>

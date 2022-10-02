@@ -13,10 +13,13 @@ function BotCollection({handleCancelClick, handleClick}) {
     })
   },[])
 
+  
+
   return (
     <div className="ui four column grid">
       <div className="row">
         {botArmy?.map(data =>(
+         
           <BotCard  key={data.id} bot={data} onCardClick={handleClick} onCardCancel={handleCancelClick}/>
         ))}
       </div>

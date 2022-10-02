@@ -10,18 +10,23 @@ function BotsPage() {
     setMyBot( current=>[...current, data])
   }
 
-  function handleCancelClick(event){ 
-    console.log("delete clicked")
+  function handleCancelClick(id){ 
+   fetch(`http://localhost:8002/bots/${id}`,{
+    method:"DELETE"
+   })
+   .then(res =>res.json())
+   .then(data=>{
+    const dataClicked = myBot.filter(info => info.id !== id)
+    setMyBot(current=>[...current, dataClicked])
+   })
   }
-  function handleMyBotClick(event){ 
-    console.log("delete clicked")
-  }
+
   const withoutDuplicates = [...new Set(myBot)];
 
   return (
     <div>
       
-      <YourBotArmy info={withoutDuplicates} handleClick={handleMyBotClick} handleCancelClick={handleCancelClick}/>
+      <YourBotArmy info={withoutDuplicates} />
       <BotCollection handleClick={handleClick} handleCancelClick={handleCancelClick}/>
     </div>
   )
