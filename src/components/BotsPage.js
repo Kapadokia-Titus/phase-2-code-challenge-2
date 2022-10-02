@@ -13,10 +13,15 @@ function BotsPage() {
   function handleCancelClick(event){ 
     console.log("delete clicked")
   }
+  function handleMyBotClick(event){ 
+    console.log("delete clicked")
+  }
+  const withoutDuplicates = [...new Set(myBot)];
 
   return (
     <div>
-      <YourBotArmy info={myBot} handleClick={handleClick} handleCancelClick={handleCancelClick}/>
+      
+      <YourBotArmy info={withoutDuplicates} handleClick={handleMyBotClick} handleCancelClick={handleCancelClick}/>
       <BotCollection handleClick={handleClick} handleCancelClick={handleCancelClick}/>
     </div>
   )
