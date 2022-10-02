@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import BotCard from "./BotCard";
 
-function BotCollection() {
+
+function BotCollection({handleCancelClick, handleClick}) {
   const [botArmy, setBotArmy] = useState([])
 
   useEffect(()=>{
@@ -12,13 +13,11 @@ function BotCollection() {
     })
   },[])
 
-  
   return (
     <div className="ui four column grid">
       <div className="row">
-        {console.log(botArmy)}
-        {botArmy.map(data =>(
-          <BotCard bot={data}/>
+        {botArmy?.map(data =>(
+          <BotCard  key={data.id} bot={data} onCardClick={handleClick} onCardCancel={handleCancelClick}/>
         ))}
       </div>
     </div>

@@ -1,14 +1,23 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import YourBotArmy from "./YourBotArmy";
 import BotCollection from "./BotCollection";
 
 function BotsPage() {
-  //start here with your code for step one
+
+  const [myBot, setMyBot] = useState([])
+  
+  function  handleClick(data){
+    setMyBot( current=>[...current, data])
+  }
+
+  function handleCancelClick(event){ 
+    console.log("delete clicked")
+  }
 
   return (
     <div>
-      <YourBotArmy />
-      <BotCollection />
+      <YourBotArmy info={myBot} handleClick={handleClick} handleCancelClick={handleCancelClick}/>
+      <BotCollection handleClick={handleClick} handleCancelClick={handleCancelClick}/>
     </div>
   )
 }
