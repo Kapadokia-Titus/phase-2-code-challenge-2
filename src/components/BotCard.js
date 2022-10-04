@@ -9,18 +9,17 @@ const botTypeClasses = {
   Captain: "icon star",
 };
 
-function BotCard({ bot, onCardClick, onCardCancel }) {
 
-  const handleButtonClick= (id)=>{
-    onCardCancel(id)
-  }
 
+function BotCard({ bot, handleBot, handleBotDelete }) {
+
+  console.log(bot.avatar_url)
   return (
     <div className="ui column">
       <div
         className="ui card"
         key={bot.id}
-        onClick={()=>onCardClick(bot)}
+        onClick={() => handleBot(bot)} 
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
@@ -52,9 +51,7 @@ function BotCard({ bot, onCardClick, onCardCancel }) {
             <div className="ui center aligned segment basic">
               <button
                 className="ui mini red button"
-                onClick={()=>handleButtonClick(bot.id)}
-              >
-                x
+                onClick={() => handleBotDelete(bot)}>x
               </button>
             </div>
           </span>
@@ -65,5 +62,3 @@ function BotCard({ bot, onCardClick, onCardCancel }) {
 }
 
 export default BotCard;
-
-

@@ -1,21 +1,17 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import BotCard from "./BotCard";
 
-function YourBotArmy({info}) {
-  const [newInfo, setNewInfo] = useState(info)
- 
-  function handleMyBotClick(data){ 
-    const dataClicked = info.filter(info => info.id !== data.id)
-    setNewInfo({...newInfo, dataClicked})
-  }
+function YourBotArmy({ botsArmy, onRemoveBotFromArmy }) {
 
+  const army = botsArmy.map((bot) => {
+    return <BotCard key={bot} bot={bot} handleBot={onRemoveBotFromArmy}/>
+  })
 
   return (
     <div className="ui segment inverted olive bot-army">
       <div className="ui five column grid">
         <div className="row bot-army-row">
-          {info.map(newInfo =><BotCard key={newInfo.id} bot={newInfo} onCardClick={handleMyBotClick}/>)}
-         
+          {army}
         </div>
       </div>
     </div>
